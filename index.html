@@ -25,8 +25,8 @@
   <meta name="twitter:description" content="Professional websites for small businesses. $250 flat, plus optional on-page SEO for $25.">
   <meta name="twitter:image" content="https://nwwebco.com/media/nw-logo-full.png">
 
-  <link rel="icon" type="image/png" sizes="192x192" href="media/favicon.png">
-  <link rel="apple-touch-icon" href="media/favicon.png">
+   <link rel="icon" type="image/png" sizes="192x192" href="media/nw-logo-mark.png">
+  <link rel="apple-touch-icon" href="media/nw-logo-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -245,9 +245,19 @@
     .work-card:hover{transform:translateY(-5px);box-shadow:0 25px 60px rgba(4,15,25,.11)}
     .work-media{position:relative;background:#0b1a29;aspect-ratio:16/10;overflow:hidden}
     .work-media img,.work-media video{width:100%;height:100%;object-fit:cover}
-    .work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 40%,rgba(7,19,31,.25) 100%);pointer-events:none}
-    .video-badge{position:absolute;z-index:2;left:15px;top:15px;background:rgba(7,19,31,.78);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
-    .play-overlay{position:absolute;z-index:3;inset:0;display:grid;place-items:center;cursor:pointer}
+       .work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 40%,rgba(7,19,31,.25) 100%);pointer-events:none}
+    .work-media.compare{cursor:ew-resize;touch-action:pan-y}
+    .compare-after{position:absolute;inset:0;z-index:1}
+    .compare-after img{width:100%;height:100%;object-fit:cover}
+    .compare-before{position:absolute;inset:0;z-index:2;clip-path:inset(0 0 0 var(--reveal,0%));background:#07131f}
+    .loading-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:radial-gradient(circle at 50% 38%,#152c40,#07131f)}
+    .loading-spinner{width:42px;height:42px;border-radius:50%;border:3px solid rgba(255,255,255,.16);border-top-color:var(--teal);animation:compareSpin .85s linear infinite}
+    @keyframes compareSpin{to{transform:rotate(360deg)}}
+    .loading-label{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+    .compare-line{position:absolute;top:0;bottom:0;left:var(--reveal,0%);width:2px;background:rgba(255,255,255,.9);z-index:3;pointer-events:none}
+    .compare-handle{position:absolute;top:50%;left:var(--reveal,0%);transform:translate(-50%,-50%);z-index:4;width:40px;height:40px;border-radius:50%;background:#fff;border:0;display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.32);cursor:ew-resize;font-size:14px;color:var(--ink);font-weight:900}
+    .video-badge{position:absolute;z-index:5;left:15px;top:15px;background:rgba(7,19,31,.78);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+    .play-overlay{position:absolute;z-index:5;inset:0;display:grid;place-items:center;cursor:pointer}
     .play{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;box-shadow:0 14px 35px rgba(0,0,0,.25);transition:transform .2s ease}
     .work-card:hover .play{transform:scale(1.06)}
     .play::after{content:"";margin-left:4px;border-left:10px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
@@ -587,8 +597,16 @@
 
       <div class="work-grid">
         <article class="work-card reveal">
-          <div class="work-media">
-            <img src="media/offer-sprint-poster.jpg" alt="OfferSprint website concept preview" loading="lazy">
+                    <div class="work-media compare" style="--reveal:0%">
+            <div class="compare-after"><img src="media/offer-sprint-poster.jpg" alt="OfferSprint website concept preview" loading="lazy"></div>
+            <div class="compare-before">
+              <div class="loading-screen">
+                <span class="loading-spinner" aria-hidden="true"></span>
+                <span class="loading-label">Building the site…</span>
+              </div>
+            </div>
+            <div class="compare-line" aria-hidden="true"></div>
+            <button class="compare-handle" type="button" aria-label="Drag to reveal the finished OfferSprint site">⟷</button>
             <span class="video-badge">Landing page</span>
             <button class="play-overlay" type="button" data-video="media/offer-sprint-demo.mp4" data-title="OfferSprint — landing page demo" aria-label="Play OfferSprint demo"><span class="play" aria-hidden="true"></span></button>
           </div>
@@ -596,8 +614,16 @@
         </article>
 
         <article class="work-card reveal">
-          <div class="work-media">
-            <img src="media/fluent-elena-poster.jpg" alt="Fluent with Elena website concept preview" loading="lazy">
+                   <div class="work-media compare" style="--reveal:0%">
+            <div class="compare-after"><img src="media/fluent-elena-poster.jpg" alt="Fluent with Elena website concept preview" loading="lazy"></div>
+            <div class="compare-before">
+              <div class="loading-screen">
+                <span class="loading-spinner" aria-hidden="true"></span>
+                <span class="loading-label">Building the site…</span>
+              </div>
+            </div>
+            <div class="compare-line" aria-hidden="true"></div>
+            <button class="compare-handle" type="button" aria-label="Drag to reveal the finished Fluent with Elena site">⟷</button>
             <span class="video-badge">Service website</span>
             <button class="play-overlay" type="button" data-video="media/fluent-elena-demo.mp4" data-title="Fluent with Elena — website demo" aria-label="Play Fluent with Elena demo"><span class="play" aria-hidden="true"></span></button>
           </div>
@@ -776,7 +802,29 @@
   document.getElementById('modalClose').addEventListener('click',closeVideo);
   modal.addEventListener('click',e=>{if(e.target===modal) closeVideo()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('open')) closeVideo()});
+  
+  // Before/after compare sliders
+  document.querySelectorAll('.work-media.compare').forEach(el=>{
+    let dragging=false;
+    function setReveal(clientX){
+      const rect=el.getBoundingClientRect();
+      let pct=((clientX-rect.left)/rect.width)*100;
+      pct=Math.max(0,Math.min(100,pct));
+      el.style.setProperty('--reveal',pct+'%');
+    }
+    el.addEventListener('pointerdown',e=>{
+      if(e.target.closest('.play-overlay')) return;
+      dragging=true;
+      el.setPointerCapture(e.pointerId);
+      setReveal(e.clientX);
+    });
+    el.addEventListener('pointermove',e=>{ if(dragging) setReveal(e.clientX); });
+    el.addEventListener('pointerup',()=>{ dragging=false; });
+    el.addEventListener('pointercancel',()=>{ dragging=false; });
+  });
 
+  // FAQ accordion
+  
   // FAQ accordion
   document.querySelectorAll('.faq button').forEach(button=>button.addEventListener('click',()=>{
     const item=button.parentElement;
