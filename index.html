@@ -241,6 +241,10 @@
 
     /* Work */
     .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .work-card.wide{grid-column:1/-1}
+    .work-card.wide .work-media{aspect-ratio:21/9}
+    .site-frame{position:absolute;inset:0;overflow:hidden;background:#fff}
+    .site-frame iframe{position:absolute;top:0;left:0;width:400%;height:400%;transform:scale(.25);transform-origin:top left;border:0;pointer-events:none}
     .work-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
     .work-card:hover{transform:translateY(-5px);box-shadow:0 25px 60px rgba(4,15,25,.11)}
     .work-media{position:relative;background:#0b1a29;aspect-ratio:16/10;overflow:hidden}
@@ -628,6 +632,20 @@
             <button class="play-overlay" type="button" data-video="media/fluent-elena-demo.mp4" data-title="Fluent with Elena — website demo" aria-label="Play Fluent with Elena demo"><span class="play" aria-hidden="true"></span></button>
           </div>
           <div class="work-body"><span class="work-tag">Trust-first design</span><h3>Fluent with Elena</h3><p>A friendly service site that turns a personal brand into one clean place to understand, trust, and book.</p><div class="work-meta"><span class="pill">Service offer</span><span class="pill">Personal brand</span><span class="pill">Booking CTA</span></div></div>
+        </article>
+                <article class="work-card wide reveal">
+          <div class="work-media compare" style="--reveal:0%">
+            <div class="compare-after">
+              <div class="site-frame"><iframe src="media/atelier-morrow.html" title="Atelier Morrow — redesigned site" loading="lazy" tabindex="-1"></iframe></div>
+            </div>
+            <div class="compare-before">
+              <div class="site-frame"><iframe src="media/atelier-morrow-old.html" title="Atelier Morrow — old outdated site" loading="lazy" tabindex="-1"></iframe></div>
+            </div>
+            <div class="compare-line" aria-hidden="true"></div>
+            <button class="compare-handle" type="button" aria-label="Drag to see the redesign">⟷</button>
+            <span class="video-badge">Before / after</span>
+          </div>
+          <div class="work-body"><span class="work-tag">Full redesign</span><h3>Atelier Morrow</h3><p>From a cluttered, dated homepage to a calm, editorial interior-design site that actually reflects the brand. Drag the handle to see the full transformation.</p><div class="work-meta"><span class="pill">Brand refresh</span><span class="pill">Layout</span><span class="pill">Typography</span></div></div>
         </article>
       </div>
     </div>
