@@ -250,7 +250,8 @@
     .work-media{position:relative;background:#0b1a29;aspect-ratio:16/10;overflow:hidden}
     .work-media img,.work-media video{width:100%;height:100%;object-fit:cover}
     .work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 40%,rgba(7,19,31,.25) 100%);pointer-events:none}
-    .work-media.compare{cursor:ew-resize;touch-action:pan-y}
+    .work-media.compare{cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+    .compare-after img{-webkit-user-drag:none;user-drag:none;pointer-events:none}
     .compare-after{position:absolute;inset:0;z-index:1}
     .compare-after img{width:100%;height:100%;object-fit:cover}
     .compare-before{position:absolute;inset:0;z-index:2;clip-path:inset(0 0 0 var(--reveal,0%));background:#07131f}
@@ -261,7 +262,7 @@
     .compare-line{position:absolute;top:0;bottom:0;left:var(--reveal,0%);width:2px;background:rgba(255,255,255,.9);z-index:3;pointer-events:none}
     .compare-handle{position:absolute;top:50%;left:var(--reveal,0%);transform:translate(-50%,-50%);z-index:4;width:40px;height:40px;border-radius:50%;background:#fff;border:0;display:grid;place-items:center;box-shadow:0 12px 28px rgba(0,0,0,.32);cursor:ew-resize;font-size:14px;color:var(--ink);font-weight:900}
     .video-badge{position:absolute;z-index:5;left:15px;top:15px;background:rgba(7,19,31,.78);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:7px 10px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
-    .play-overlay{position:absolute;z-index:5;inset:0;display:grid;place-items:center;cursor:pointer}
+    .play-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:6;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;cursor:pointer;background:transparent;border:0;padding:0}
     .play{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;box-shadow:0 14px 35px rgba(0,0,0,.25);transition:transform .2s ease}
     .work-card:hover .play{transform:scale(1.06)}
     .play::after{content:"";margin-left:4px;border-left:10px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}
