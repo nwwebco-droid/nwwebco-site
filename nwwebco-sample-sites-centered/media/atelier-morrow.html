@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#231a14">
+<title>Atelier Morrow — Rooms With A Point of View</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#231a14;
+    --cream:#f7f1e6;
+    --paper:#fffaf2;
+    --text:#2a211a;
+    --muted:#7a6d60;
+    --terracotta:#c1652f;
+    --terracotta-2:#a8501f;
+    --sage:#7c9473;
+    --line:rgba(35,26,20,.13);
+    --line-dark:rgba(255,255,255,.13);
+    --shadow:0 22px 65px rgba(35,20,10,.16);
+    --radius:24px;
+    --max:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  button,input,textarea{font:inherit}
+  .container{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+  h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:-.02em}
+
+  .topnote{background:var(--ink);color:rgba(255,255,255,.6);font-size:11px;padding:9px 0;text-align:center}
+  .topnote b{color:#f0c6a4}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(35,26,20,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark)}
+  .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700}
+  .brandmark{width:36px;height:36px;border-radius:50%;border:2px solid #f0c6a4;display:grid;place-items:center;font-family:'Playfair Display',serif;font-size:17px;color:#f0c6a4}
+  .brand-text{font-size:14px;letter-spacing:.02em}
+  .brand-text small{display:block;font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-top:1px}
+  nav.links{display:flex;align-items:center;gap:26px}
+  nav.links a{color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;font-weight:600}
+  nav.links a:hover{color:#fff}
+  .nav-cta{background:var(--terracotta);color:#fff;border:0;border-radius:999px;padding:11px 17px;font-size:12px;font-weight:800;text-decoration:none}
+  .menu{display:none;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);width:40px;height:40px;border-radius:10px;color:#fff}
+  .mobile-nav{display:none}
+
+  .hero{background:var(--ink);color:#fff;padding:110px 0 80px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-20% -10% 30%;background:radial-gradient(circle at 78% 30%,rgba(193,101,47,.28),transparent 30%),radial-gradient(circle at 15% 25%,rgba(124,148,115,.2),transparent 28%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2}
+  .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:#f0c6a4}
+  .hero h1{font-size:clamp(40px,5.6vw,68px);line-height:1.03;margin:16px 0 20px;max-width:600px}
+  .hero h1 em{color:#f0c6a4;font-style:normal}
+  .hero-copy{max-width:520px;font-size:16px;color:rgba(255,255,255,.72)}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 19px;font-weight:800;font-size:13px;cursor:pointer;text-decoration:none}
+  .btn.primary{background:var(--terracotta);color:#fff}
+  .btn.secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.18)}
+  .hero-note{display:flex;gap:16px;flex-wrap:wrap;margin-top:22px;color:rgba(255,255,255,.5);font-size:11px}
+
+  .hero-visual{position:relative;min-height:400px}
+  .art{position:absolute;border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+  .art.main{inset:10px 8% 60px 0;background:linear-gradient(135deg,#d8b58e,#a97a52 45%,#5c6b52 100%);transform:rotate(-2deg)}
+  .art.card{width:55%;height:44%;right:0;bottom:0;background:var(--sage);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(3deg)}
+  .art.card h3{font-size:24px}
+  .art.card span{font-size:11px;color:#e6e9df}
+  .chip{position:absolute;left:-6%;bottom:6%;background:#fff;color:var(--ink);border-radius:16px;padding:13px 15px;box-shadow:var(--shadow);font-size:12px;font-weight:800;max-width:160px}
+  .chip span{display:block;font-weight:600;color:var(--muted);font-size:10px;margin-top:3px}
+
+  .trust-strip{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust-inner{display:grid;grid-template-columns:repeat(4,1fr)}
+  .trust-item{padding:22px 16px;border-right:1px solid var(--line)}
+  .trust-item:first-child{border-left:1px solid var(--line)}
+  .trust-item strong{display:block;font-size:13px}
+  .trust-item span{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+
+  .section{padding:96px 0}
+  .section.dark{background:var(--ink);color:#fff}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:40px}
+  .section-head h2{font-size:clamp(30px,4vw,48px);max-width:640px}
+  .section-head p{max-width:380px;color:var(--muted);font-size:14px}
+  .dark .section-head p{color:rgba(255,255,255,.6)}
+
+  .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .offer-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+  .offer-card.featured{background:var(--terracotta);color:#fff;border-color:transparent;box-shadow:var(--shadow)}
+  .offer-tag{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:#efe4d3;color:#665640;border-radius:999px;padding:6px 10px}
+  .featured .offer-tag{background:rgba(255,255,255,.18);color:#fff}
+  .offer-card h3{font-size:24px;margin:16px 0 5px}
+  .offer-price{font-size:38px;font-weight:800;letter-spacing:-.03em;margin:10px 0}
+  .offer-list{list-style:none;margin:16px 0}
+  .offer-list li{font-size:12px;padding:7px 0;border-top:1px solid rgba(35,26,20,.09)}
+  .featured .offer-list li{border-color:rgba(255,255,255,.2)}
+  .offer-list li::before{content:"✦ ";color:var(--terracotta)}
+  .featured .offer-list li::before{color:#fff}
+  .offer-cta{width:100%;margin-top:8px}
+
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .work-card{border-radius:var(--radius);overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+  .work-photo{height:230px;position:relative;background:linear-gradient(140deg,#b9baa6,#e2d8c4)}
+  .work-photo.b{background:linear-gradient(140deg,#cbb79a,#8f9c86)}
+  .work-body{padding:22px}
+  .work-tag{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--terracotta-2);font-weight:800}
+  .work-body h3{font-size:22px;margin-top:6px}
+  .work-body p{font-size:13px;color:var(--muted);margin-top:6px}
+
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .process-card{border-top:2px solid var(--terracotta);padding:20px 16px;background:rgba(255,255,255,.04);border-radius:0 0 16px 16px;min-height:170px}
+  .process-card .num{font-family:'Playfair Display',serif;font-size:13px;color:#f0c6a4}
+  .process-card h3{font-size:18px;margin-top:8px}
+  .process-card p{font-size:13px;color:rgba(255,255,255,.6);margin-top:7px}
+
+  .faq-grid{max-width:800px;margin:0 auto;display:grid;gap:10px}
+  .faq{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .faq button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:18px 20px;text-align:left;cursor:pointer;font-weight:700}
+  .faq-icon{width:24px;height:24px;border-radius:50%;background:#efe4d3;display:grid;place-items:center;transition:transform .2s}
+  .faq.open .faq-icon{transform:rotate(45deg)}
+  .faq-panel{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-panel p{padding:0 20px 20px;color:var(--muted);font-size:13px}
+
+  .cta-box{background:var(--terracotta);color:#fff;border-radius:28px;padding:44px;display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+  .cta-box h2{font-size:clamp(28px,4vw,46px);max-width:600px}
+  .cta-box p{color:rgba(255,255,255,.82);margin-top:10px;max-width:460px}
+
+  footer{background:var(--ink);color:rgba(255,255,255,.6);padding:26px 0;font-size:11px}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .footer-links{display:flex;gap:14px}
+  .footer-links a{color:rgba(255,255,255,.6);text-decoration:none}
+  .footer-links a:hover{color:#fff}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid,.offer-grid,.work-grid{grid-template-columns:1fr}
+    .offer-grid{grid-template-columns:1fr}
+    .process-grid{grid-template-columns:1fr 1fr}
+    nav.links,.nav-cta{display:none}
+    .menu{display:block}
+    .mobile-nav{position:absolute;left:14px;right:14px;top:70px;background:rgba(35,26,20,.98);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:8px}
+    .mobile-nav.open{display:grid}
+    .mobile-nav a{padding:12px 14px;color:#fff;text-decoration:none;border-radius:10px;font-size:14px}
+    .trust-inner{grid-template-columns:1fr 1fr}
+    .trust-item:nth-child(2){border-right:0}
+    .trust-item:nth-child(n+3){border-top:1px solid var(--line)}
+    .section{padding:70px 0}
+    .cta-box{display:block}
+    .cta-box .btn{margin-top:20px;width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="topnote">FICTIONAL BRAND DEMO · NOT A REAL BUSINESS · Designed as a <b>Northwest Web Co.</b> portfolio example</div>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">
+      <span class="brandmark" aria-hidden="true">M</span>
+      <span class="brand-text">ATELIER MORROW<small>INTERIOR STUDIO</small></span>
+    </a>
+    <nav class="links">
+      <a href="#studio">Studio</a>
+      <a href="#work">Projects</a>
+      <a href="#packages">Packages</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Start a project →</a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#studio">Studio</a>
+    <a href="#work">Projects</a>
+    <a href="#packages">Packages</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Start a project →</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Interiors with intention</span>
+        <h1>Rooms with a <em>point of view.</em></h1>
+        <p class="hero-copy">Atelier Morrow designs warm, character-rich homes for people who want spaces that feel collected — not decorated.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Start a design inquiry →</a>
+          <a class="btn secondary" href="#work">See the work</a>
+        </div>
+        <div class="hero-note">
+          <span>Portland · Seattle · Remote</span>
+          <span>Full-service + room refreshes</span>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="art main"></div>
+        <div class="art card">
+          <div>
+            <span style="color:#f0e6d8;font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800">Signature style</span>
+            <h3>Warm. Modern.<br>A little unexpected.</h3>
+          </div>
+          <span>2026 collection ↗</span>
+        </div>
+        <div class="chip">18 projects<span>completed in the studio's first year</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="container trust-inner">
+      <div class="trust-item"><strong>Portland + Seattle</strong><span>Also working remote</span></div>
+      <div class="trust-item"><strong>Full-service</strong><span>Concept through install</span></div>
+      <div class="trust-item"><strong>Considered materials</strong><span>Nothing loud without a reason</span></div>
+      <div class="trust-item"><strong>Direct contact</strong><span>One studio, one point of contact</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="packages">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow" style="color:var(--terracotta-2)">Ways to work together</span><h2>Choose your level of involvement.</h2></div>
+        <p>Three packages make the decision simple, with room to customize the final scope.</p>
+      </div>
+      <div class="offer-grid">
+        <article class="offer-card reveal">
+          <span class="offer-tag">Refresh</span>
+          <h3>The Room Edit</h3>
+          <div class="offer-price">$4,800</div>
+          <ul class="offer-list">
+            <li>Concept + visual direction</li>
+            <li>Furniture & decor selections</li>
+            <li>One revision round</li>
+          </ul>
+          <a class="btn secondary offer-cta" href="#contact" style="background:#efe4d3;color:var(--ink)">Choose this package</a>
+        </article>
+        <article class="offer-card featured reveal">
+          <span class="offer-tag">Most popular</span>
+          <h3>The Signature</h3>
+          <div class="offer-price">$14,500</div>
+          <ul class="offer-list">
+            <li>Whole-home design direction</li>
+            <li>Custom sourcing + procurement</li>
+            <li>Final styling day</li>
+          </ul>
+          <a class="btn offer-cta" href="#contact" style="background:#fff;color:var(--terracotta-2)">Start with Signature →</a>
+        </article>
+        <article class="offer-card reveal">
+          <span class="offer-tag">Full service</span>
+          <h3>The Residence</h3>
+          <div class="offer-price">$28k+</div>
+          <ul class="offer-list">
+            <li>Architecture coordination</li>
+            <li>Custom millwork direction</li>
+            <li>White-glove sourcing</li>
+          </ul>
+          <a class="btn secondary offer-cta" href="#contact" style="background:#efe4d3;color:var(--ink)">Talk through the scope</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow" style="color:var(--terracotta-2)">Selected projects</span><h2>A few rooms from the archive.</h2></div>
+        <p>Fictional case studies showing how the studio turns a space into a visual story.</p>
+      </div>
+      <div class="work-grid">
+        <article class="work-card reveal">
+          <div class="work-photo"></div>
+          <div class="work-body"><span class="work-tag">Portland · 1,850 sq ft</span><h3>Alberta House</h3><p>Warm oak, limestone, olive upholstery, and a kitchen designed around long dinners.</p></div>
+        </article>
+        <article class="work-card reveal">
+          <div class="work-photo b"></div>
+          <div class="work-body"><span class="work-tag">Seattle · 2,240 sq ft</span><h3>Madrona Apartment</h3><p>A softer palette, graphic lighting, and vintage pieces that keep the space from feeling too perfect.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="studio">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow">The studio</span><h2>You don't need a big reno to feel the difference.</h2></div>
+        <p>Tell us how you actually live, and the room gets designed around that — not a trend.</p>
+      </div>
+      <div class="process-grid">
+        <article class="process-card reveal"><div class="num">01</div><h3>Walkthrough</h3><p>A conversation about how the space is really used, day to day.</p></article>
+        <article class="process-card reveal"><div class="num">02</div><h3>Direction</h3><p>A moodboard and layout plan before anything gets purchased.</p></article>
+        <article class="process-card reveal"><div class="num">03</div><h3>Sourcing</h3><p>Furniture, fabric, and finishes selected to hold up over time.</p></article>
+        <article class="process-card reveal"><div class="num">04</div><h3>Styling day</h3><p>The final layer — the details that make a room feel finished.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><span class="eyebrow" style="color:var(--terracotta-2)">Questions</span><h2>Before we talk, the basics.</h2></div>
+      </div>
+      <div class="faq-grid">
+        <div class="faq reveal"><button type="button"><span>Do you work remotely?</span><span class="faq-icon">+</span></button><div class="faq-panel"><p>Yes — the studio offers remote design direction alongside in-person work in Portland and Seattle.</p></div></div>
+        <div class="faq reveal"><button type="button"><span>How early should we reach out?</span><span class="faq-icon">+</span></button><div class="faq-panel"><p>For full-service projects, aim to start 2–4 months before major purchasing or renovation decisions.</p></div></div>
+        <div class="faq reveal"><button type="button"><span>Can you work with our existing furniture?</span><span class="faq-icon">+</span></button><div class="faq-panel"><p>Absolutely — the point of view is to keep what works, edit what doesn't, and only add what moves the room forward.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" style="padding-top:0">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div>
+          <span class="eyebrow" style="color:#fbe3d0">Start a conversation</span>
+          <h2>Let's make a room worth coming home to.</h2>
+          <p>This is a fictional demo — the button just confirms on-page instead of sending a real inquiry.</p>
+        </div>
+        <button class="btn" style="background:#fff;color:var(--terracotta-2)" id="startBtn">Request a design call →</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 Atelier Morrow · fictional interior studio demo</div>
+    <div class="footer-links"><a href="#work">Projects</a><a href="#packages">Packages</a><a href="#faq">FAQ</a></div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+  document.querySelectorAll('.faq button').forEach(button => button.addEventListener('click', () => {
+    const item = button.parentElement;
+    const panel = item.querySelector('.faq-panel');
+    const open = item.classList.toggle('open');
+    panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
+  }));
+
+  const startBtn = document.getElementById('startBtn');
+  if (startBtn) startBtn.addEventListener('click', () => { startBtn.textContent = 'Thanks — no message was sent ✓'; });
+
+  const reveal = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+    }, { threshold: 0.05 });
+    reveal.forEach(el => io.observe(el));
+  } else {
+    reveal.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
