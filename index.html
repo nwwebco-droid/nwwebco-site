@@ -8,6 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="author" content="Northwest Web Co.">
   <meta name="application-name" content="Northwest Web Co.">
@@ -23,6 +24,9 @@
   <meta property="og:image" content="https://nwwebco.com/media/nw-logo-full.png">
   <meta property="og:site_name" content="Northwest Web Co.">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image:width" content="1498">
+  <meta property="og:image:height" content="1050">
+  <meta property="og:image:type" content="image/png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Northwest Web Co. — Professional Websites for $250">
@@ -147,6 +151,7 @@
       border:0;border-radius:999px;padding:13px 19px;text-decoration:none;font-weight:800;cursor:pointer;
       transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
     }
+    :focus-visible{outline:3px solid rgba(80,221,194,.9);outline-offset:3px}
     .nav-cta{background:var(--teal);color:var(--ink);font-size:13px}
     .nav-cta:hover,.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(80,221,194,.22)}
     .menu{display:none;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);width:44px;height:44px;border-radius:12px;cursor:pointer}
@@ -164,7 +169,8 @@
     .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(80,221,194,.08)}
     .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(45px,6vw,77px);line-height:.98;letter-spacing:-.055em;margin:18px 0 24px;max-width:770px}
     .hero h1 .accent{color:var(--teal)}
-    .hero-copy{max-width:635px;font-size:18px;color:rgba(255,255,255,.72)}
+    .hero-sub{max-width:650px;font-size:19px;line-height:1.55;color:rgba(255,255,255,.78)}
+    .hero-copy{max-width:635px;font-size:14px;line-height:1.55;color:rgba(255,255,255,.54);margin-top:10px}
     .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:33px}
     .btn.primary{background:var(--teal);color:var(--ink)}
     .btn.secondary{background:rgba(255,255,255,.055);color:white;border:1px solid rgba(255,255,255,.16)}
@@ -346,6 +352,18 @@
     .reveal.visible{opacity:1;transform:none}
     [data-tilt]{transform-style:preserve-3d}
 
+    @media (min-width: 1440px){
+      .container{width:min(calc(100% - 64px),var(--max))}
+    }
+    @media (max-width: 1100px) and (min-width: 981px){
+      .hero-grid{gap:42px}
+      .hero{padding-top:130px}
+      .hero h1{font-size:clamp(44px,5.8vw,68px)}
+    }
+    @media (max-height: 700px) and (min-width: 761px){
+      .hero{min-height:760px;padding-top:125px;padding-bottom:70px}
+    }
+
     @media (max-width: 980px){
       .hero-grid,.offer-grid,.value-grid,.contact-wrap{grid-template-columns:1fr}
       .hero{min-height:auto;padding:135px 0 80px}
@@ -393,7 +411,7 @@
     .btn,.nav-cta{min-height:44px}
     .contact-link,input,textarea,.faq button{min-height:44px}
     .floating-chip{max-width:190px}
-    .mobile-cta{padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+    .mobile-cta{padding-bottom:calc(8px + env(safe-area-inset-bottom));padding-left:calc(8px + env(safe-area-inset-left));padding-right:calc(8px + env(safe-area-inset-right))}
 
     @media (max-width: 520px){
       .container{width:min(calc(100% - 24px),var(--max))}
@@ -460,23 +478,36 @@
 
     /* Responsive live sample website previews */
     .sample-sites-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-    .sample-site-media{position:relative;background:#07131f;overflow:hidden;border-radius:16px;min-height:560px}
-    .sample-site-media .site-frame{position:relative;width:100%;height:560px;background:#fff;overflow:auto;-webkit-overflow-scrolling:touch}
+    .sample-site-media{position:relative;background:#07131f;overflow:hidden;border-radius:18px;min-height:560px}
+    .sample-site-media .site-frame{position:relative;width:100%;height:560px;background:#fff;overflow:hidden;-webkit-overflow-scrolling:touch}
     .sample-site-media iframe{display:block;width:100%;height:100%;min-height:560px;border:0;background:#fff;pointer-events:auto}
-        .site-open{z-index:4}
+    .site-open{
+      position:absolute;right:14px;bottom:14px;z-index:8;
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:42px;padding:9px 13px;border-radius:999px;
+      background:rgba(7,19,31,.9);color:#fff;border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 10px 28px rgba(0,0,0,.22);font-size:13px;font-weight:800;
+      text-decoration:none;backdrop-filter:blur(10px)
+    }
+    .site-open:hover{background:#07131f;transform:translateY(-1px)}
     .sample-site-note{margin:0 0 14px;color:var(--muted);font-size:13px}
-    .sample-site-note strong{color:var(--paper)}
+    .sample-site-note strong{color:var(--text)}
     @media (max-width:900px){
       .sample-sites-grid{grid-template-columns:1fr}
       .sample-site-media,.sample-site-media .site-frame,.sample-site-media iframe{min-height:620px;height:620px}
     }
     @media (max-width:600px){
       .sample-sites-grid{gap:20px}
-      .sample-site-media{min-height:520px;height:520px;border-radius:12px}
+      .sample-site-media{min-height:520px;height:520px;border-radius:14px}
       .sample-site-media .site-frame,.sample-site-media iframe{height:520px;min-height:520px}
-      .site-open{font-size:12px;padding:8px 11px}
+      .site-open{right:10px;bottom:10px;font-size:12px;padding:8px 11px}
     }
-  </style>
+  
+    #leadForm h3{margin:28px 0 14px;font-size:1.05rem;letter-spacing:-.01em}
+    #leadForm h3:first-of-type{margin-top:0}
+    #leadForm select{width:100%;padding:14px 15px;border:1px solid rgba(20,28,40,.14);border-radius:12px;background:#fff;font:inherit;color:inherit}
+    #leadForm textarea{min-height:105px}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -693,16 +724,78 @@
             <a class="contact-link" href="https://instagram.com/nwwebco" target="_blank" rel="noopener">◎ @nwwebco</a>
           </div>
         </div>
-        <form id="leadForm">
+        <form id="leadForm" action="https://formsubmit.co/nwwebco@gmail.com" method="POST" target="leadFormFrame">
+          <input type="hidden" name="_subject" value="New Northwest Web Co. Website Project Questionnaire">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_next" value="">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
+          <input type="hidden" name="_replyto" id="replyToField">
+
+          <h3>1. About your business</h3>
           <div class="form-row">
-            <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
-            <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="name">Your name *</label><input id="name" name="Your name" autocomplete="name" required></div>
+            <div><label for="email">Email *</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
           </div>
-          <div><label for="business">Business</label><input id="business" name="business" autocomplete="organization" placeholder="Your business name" required></div>
-          <div><label for="message">What do you need?</label><textarea id="message" name="message" placeholder="A quick description is enough."></textarea></div>
-          <button class="btn primary" type="submit">Email my project details →</button>
-          <div class="form-note">Submitting opens your email app with the project details filled in. No form data is stored by this page.</div>
+          <div class="form-row">
+            <div><label for="business">Business name *</label><input id="business" name="Business name" autocomplete="organization" required></div>
+            <div><label for="phone">Phone (optional)</label><input id="phone" name="Phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div><label for="businessDescription">What does your business do? *</label><textarea id="businessDescription" name="Business description" required placeholder="Tell us what you sell, what services you provide, and anything important about your business."></textarea></div>
+          <div class="form-row">
+            <div><label for="location">Where is your business located?</label><input id="location" name="Business location" placeholder="City, State or service area"></div>
+            <div><label for="existingSite">Do you have a current website?</label><input id="existingSite" name="Current website" type="url" placeholder="https://..."></div>
+          </div>
+
+          <h3>2. What should the website accomplish?</h3>
+          <div><label for="mainGoal">What is the #1 thing you want the website to accomplish? *</label><textarea id="mainGoal" name="Main website goal" required placeholder="Examples: get more quote requests, book appointments, sell products, explain our services, get phone calls."></textarea></div>
+          <div><label for="customers">Who is your ideal customer? *</label><textarea id="customers" name="Ideal customer" required placeholder="Who are you trying to reach? Age range, location, type of customer, etc."></textarea></div>
+          <div><label for="callsToAction">What should visitors be able to do?</label><textarea id="callsToAction" name="Visitor actions" placeholder="Examples: request a quote, call, text, book, buy, join an email list, visit a location."></textarea></div>
+
+          <h3>3. Pages & content</h3>
+          <div><label for="pages">Which pages do you want? *</label><textarea id="pages" name="Requested pages" required placeholder="Examples: Home, About, Services, Pricing, Portfolio, FAQ, Contact, Blog, Booking, Shop."></textarea></div>
+          <div><label for="services">List your main products or services *</label><textarea id="services" name="Products and services" required placeholder="Include names, short descriptions, prices if applicable, and anything customers should know."></textarea></div>
+          <div><label for="contentReady">What content do you already have?</label><textarea id="contentReady" name="Existing content" placeholder="Tell us what you have: logo, photos, videos, text, testimonials, pricing, PDFs, social links, etc."></textarea></div>
+          <div><label for="testimonials">Do you have customer reviews/testimonials you want included?</label><textarea id="testimonials" name="Testimonials" placeholder="Paste them here or tell us where they can be found."></textarea></div>
+
+          <h3>4. Design & branding</h3>
+          <div class="form-row">
+            <div><label for="style">What style do you want?</label><select id="style" name="Preferred style"><option value="">Choose one</option><option>Modern / clean</option><option>Luxury / premium</option><option>Bold / energetic</option><option>Simple / minimal</option><option>Friendly / approachable</option><option>Professional / corporate</option><option>Rustic / outdoors</option><option>Not sure — choose for me</option></select></div>
+            <div><label for="colors">Preferred colors</label><input id="colors" name="Preferred colors" placeholder="Colors you like or want to avoid"></div>
+          </div>
+          <div><label for="designInspiration">Are there websites you like?</label><textarea id="designInspiration" name="Design inspiration websites" placeholder="Paste links and tell us what you like about each one."></textarea></div>
+          <div><label for="brandAssets">Do you already have a logo/brand guide?</label><textarea id="brandAssets" name="Brand assets" placeholder="Describe or tell us where you'll send your logo, fonts, colors, etc."></textarea></div>
+
+          <h3>5. Features & functionality</h3>
+          <div><label for="features">What features do you need?</label><textarea id="features" name="Website features" placeholder="Examples: contact form, quote form, booking/calendar, online payments, store, photo gallery, reviews, map, newsletter signup, before/after slider, animations, social media links."></textarea></div>
+          <div><label for="integrations">Any services that need to connect to the website?</label><textarea id="integrations" name="Integrations" placeholder="Examples: Calendly, Square, Stripe, Google Maps, Instagram, Facebook, CRM, email marketing, booking software."></textarea></div>
+          <div><label for="forms">What information should your forms collect?</label><textarea id="forms" name="Form requirements" placeholder="Tell us exactly what you want customers to enter when requesting a quote, booking, contacting you, etc."></textarea></div>
+
+          <h3>6. Search & marketing</h3>
+          <div><label for="keywords">What would people search on Google to find you?</label><textarea id="keywords" name="SEO keywords" placeholder="Examples: landscaping in Sherwood Oregon, affordable house cleaning, Portland wedding photographer."></textarea></div>
+          <div><label for="serviceAreas">What cities/areas do you serve?</label><input id="serviceAreas" name="Service areas" placeholder="Cities, counties, states, or 'online only'"></div>
+          <div><label for="socials">Social media links</label><textarea id="socials" name="Social media links" placeholder="Instagram, Facebook, TikTok, YouTube, LinkedIn, etc."></textarea></div>
+
+          <h3>7. Domain & setup</h3>
+          <div class="form-row">
+            <div><label for="domain">Do you already own a domain?</label><input id="domain" name="Domain" placeholder="yourbusiness.com"></div>
+            <div><label for="hosting">Do you already have hosting?</label><select id="hosting" name="Hosting"><option value="">Choose one</option><option>Yes</option><option>No</option><option>Not sure</option></select></div>
+          </div>
+          <div><label for="emailSetup">Do you need business email or other setup?</label><textarea id="emailSetup" name="Email and technical setup" placeholder="Examples: hello@yourbusiness.com, Google Business Profile, analytics, domain setup, hosting setup."></textarea></div>
+
+          <h3>8. Timeline & final details</h3>
+          <div class="form-row">
+            <div><label for="timeline">When would you like the website launched?</label><select id="timeline" name="Desired timeline"><option value="">Choose one</option><option>As soon as possible</option><option>Within 1–2 weeks</option><option>Within 3–4 weeks</option><option>Within 1–2 months</option><option>No specific deadline</option></select></div>
+            <div><label for="budget">Approximate budget</label><select id="budget" name="Budget"><option value="">Choose one</option><option>$250–$500</option><option>$500–$1,000</option><option>$1,000–$2,000</option><option>$2,000+</option><option>Not sure yet</option></select></div>
+          </div>
+          <div><label for="competitors">Who are your main competitors?</label><textarea id="competitors" name="Competitors" placeholder="List websites/businesses you compete with, if you know them."></textarea></div>
+          <div><label for="anythingElse">Anything else we should know?</label><textarea id="anythingElse" name="Additional notes" placeholder="Special requests, concerns, ideas, deadlines, or anything else that would help us build the right website."></textarea></div>
+
+          <button class="btn primary" type="submit">Send my website project details →</button>
+          <div class="form-note">This questionnaire gives Northwest Web Co. the information needed to plan your website before we start. You can leave anything blank that doesn't apply.</div>
+          <div id="formStatus" class="form-note" role="status" aria-live="polite"></div>
         </form>
+        <iframe name="leadFormFrame" id="leadFormFrame" title="Form submission" style="display:none" aria-hidden="true"></iframe>
       </div>
     </div>
   </section>
@@ -854,19 +947,22 @@
     panel.style.maxHeight=open ? panel.scrollHeight+'px' : '0px';
   }));
 
-  // Mailto lead form
-  document.getElementById('leadForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const data=new FormData(e.currentTarget);
-    const subject=encodeURIComponent(`Website project — ${data.get('business') || 'New inquiry'}`);
-    const body=encodeURIComponent([
-      `Name: ${data.get('name') || ''}`,
-      `Email: ${data.get('email') || ''}`,
-      `Business: ${data.get('business') || ''}`,
-      '',
-      `What I need: ${data.get('message') || 'Not specified'}`
-    ].join('\n'));
-    window.location.href=`mailto:nwwebco@gmail.com?subject=${subject}&body=${body}`;
+  // Real lead form — submits to FormSubmit without opening the visitor's email app.
+  const leadForm = document.getElementById('leadForm');
+  const formFrame = document.getElementById('leadFormFrame');
+  const formStatus = document.getElementById('formStatus');
+  leadForm.addEventListener('submit',e=>{
+    const email = document.getElementById('email').value.trim();
+    document.getElementById('replyToField').value = email;
+    if(!email){ e.preventDefault(); return; }
+    formStatus.textContent = 'Sending your message…';
+    formFrame.dataset.submitting = 'true';
+  });
+  formFrame.addEventListener('load',()=>{
+    if(formFrame.dataset.submitting !== 'true') return;
+    formFrame.dataset.submitting = 'false';
+    formStatus.textContent = 'Thanks! Your message was sent. We’ll get back to you soon.';
+    leadForm.reset();
   });
 </script>
 </body>
