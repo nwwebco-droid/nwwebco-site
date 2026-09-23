@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<defs><linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ECFEFF"/><stop offset="1" stop-color="#ffffff"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-opacity=".12"/></filter></defs>
+<rect width="1400" height="900" fill="#fff"/>
+<rect width="1400" height="72" fill="#fff" stroke="#e5e7eb"/>
+<text x="70" y="46" font-family="Arial,sans-serif" font-size="27" font-weight="800" fill="#07111F">Voltline<tspan fill="#06B6D4">.</tspan></text>
+<text x="780" y="44" font-family="Arial,sans-serif" font-size="15" fill="#475569">Services</text><text x="870" y="44" font-family="Arial,sans-serif" font-size="15" fill="#475569">About</text><text x="940" y="44" font-family="Arial,sans-serif" font-size="15" fill="#475569">Results</text>
+<rect x="1070" y="17" width="245" height="39" rx="20" fill="#07111F"/><text x="1192" y="43" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">Get an Estimate</text>
+<rect y="72" width="1400" height="485" fill="url(#hero)"/>
+<text x="70" y="158" font-family="Arial,sans-serif" font-size="14" font-weight="800" letter-spacing="3" fill="#06B6D4">EV PERFORMANCE</text>
+<text x="70" y="245" font-family="Arial,sans-serif" font-size="64" font-weight="800" fill="#07111F">Charge into what’s next.</text>
+<text x="70" y="292" font-family="Arial,sans-serif" font-size="19" fill="#526173">A polished, modern website concept built to turn visitors into customers.</text>
+<rect x="70" y="335" width="185" height="50" rx="25" fill="#07111F"/><text x="162" y="366" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">Get an Estimate →</text>
+<rect x="820" y="120" width="475" height="345" rx="32" fill="#07111F" filter="url(#shadow)"/>
+<rect x="855" y="155" width="405" height="275" rx="22" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.3)"/>
+<text x="885" y="195" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#fff" opacity=".75">VOLTLINE / DIGITAL EXPERIENCE</text>
+<text x="885" y="300" font-family="Arial,sans-serif" font-size="35" font-weight="800" fill="#fff">Charge into what’s next.</text>
+<rect x="885" y="345" width="105" height="30" rx="15" fill="#06B6D4"/><text x="937" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">Explore</text>
+<rect x="70" y="620" width="380" height="190" rx="25" fill="#fff" stroke="#e2e8f0"/><rect x="475" y="620" width="380" height="190" rx="25" fill="#fff" stroke="#e2e8f0"/><rect x="880" y="620" width="380" height="190" rx="25" fill="#fff" stroke="#e2e8f0"/>
+<text x="100" y="665" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#06B6D4">01</text><text x="100" y="710" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#07111F">Services</text><text x="100" y="746" font-family="Arial,sans-serif" font-size="14" fill="#64748b">Clear, focused offerings designed</text><text x="100" y="768" font-family="Arial,sans-serif" font-size="14" fill="#64748b">around what customers need.</text>
+<text x="505" y="665" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#06B6D4">02</text><text x="505" y="710" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#07111F">Proof & Results</text><text x="505" y="746" font-family="Arial,sans-serif" font-size="14" fill="#64748b">Build trust with strong proof,</text><text x="505" y="768" font-family="Arial,sans-serif" font-size="14" fill="#64748b">reviews, and real outcomes.</text>
+<text x="910" y="665" font-family="Arial,sans-serif" font-size="13" font-weight="800" fill="#06B6D4">03</text><text x="910" y="710" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#07111F">Easy Contact</text><text x="910" y="746" font-family="Arial,sans-serif" font-size="14" fill="#64748b">Make it simple for visitors to</text><text x="910" y="768" font-family="Arial,sans-serif" font-size="14" fill="#64748b">take the next step.</text>
+</svg>
