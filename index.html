@@ -244,7 +244,7 @@
     .work-card.wide{grid-column:1/-1}
     .work-card.wide .work-media{aspect-ratio:21/9}
     .site-frame{position:absolute;inset:0;overflow:hidden;background:#fff}
-    .site-frame iframe{position:absolute;top:0;left:0;width:400%;height:400%;transform:scale(.25);transform-origin:top left;border:0;pointer-events:none}
+    .site-frame iframe{position:absolute;top:50%;left:50%;border:0;pointer-events:none;transform-origin:center center}
     .work-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease}
     .work-card:hover{transform:translateY(-5px);box-shadow:0 25px 60px rgba(4,15,25,.11)}
     .work-media{position:relative;background:#0b1a29;aspect-ratio:16/10;overflow:hidden}
@@ -340,6 +340,7 @@
       .trust-item:nth-child(n+3){border-top:1px solid var(--line)}
       .process-grid{grid-template-columns:repeat(2,1fr)}
       .work-grid{grid-template-columns:1fr}
+      .work-card.wide .work-media{aspect-ratio:4/3}
       .section-head{align-items:start;flex-direction:column}
     }
 
@@ -821,6 +822,27 @@
   document.getElementById('modalClose').addEventListener('click',closeVideo);
   modal.addEventListener('click',e=>{if(e.target===modal) closeVideo()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('open')) closeVideo()});
+
+  // Scale embedded site previews to fill their card (like a "cover" fit)
+  const siteFrames = document.querySelectorAll('.site-frame');
+  const REF_W = 1440, REF_H = 900;
+  function fitSiteFrame(frame){
+    const iframe = frame.querySelector('iframe');
+    if(!iframe) return;
+    const rect = frame.getBoundingClientRect();
+    if(!rect.width || !rect.height) return;
+    const scale = Math.max(rect.width/REF_W, rect.height/REF_H) * 1.02;
+    iframe.style.width = REF_W+'px';
+    iframe.style.height = REF_H+'px';
+    iframe.style.transform = `translate(-50%,-50%) scale(${scale})`;
+  }
+  if('ResizeObserver' in window){
+    const ro = new ResizeObserver(entries=>entries.forEach(e=>fitSiteFrame(e.target)));
+    siteFrames.forEach(f=>ro.observe(f));
+  } else {
+    siteFrames.forEach(fitSiteFrame);
+    window.addEventListener('resize',()=>siteFrames.forEach(fitSiteFrame));
+  }
 
   // Before/after compare sliders
   document.querySelectorAll('.work-media.compare').forEach(el=>{
