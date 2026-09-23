@@ -248,7 +248,7 @@
 
     /* Photo/value section */
     .value-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
-    .photo-card{min-height:520px;border-radius:28px;overflow:hidden;position:relative;background:#0b1a29 url('media/offer-sprint-poster.jpg') center/cover no-repeat;box-shadow:var(--shadow)}
+    .photo-card{min-height:520px;border-radius:28px;overflow:hidden;position:relative;background:#0b1a29;box-shadow:var(--shadow)}
     .photo-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 35%,rgba(7,19,31,.78) 100%)}
     .photo-caption{position:absolute;z-index:2;left:24px;right:24px;bottom:23px;color:#fff}
     .photo-caption strong{font-family:'Manrope',sans-serif;font-size:20px;display:block}
@@ -477,7 +477,10 @@
     }
 
     /* Responsive live sample website previews */
-    .sample-sites-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+    .sample-sites-grid{grid-template-columns:1fr;gap:28px;justify-items:center}
+    .sample-sites-grid .work-card{width:min(1080px,100%);margin-inline:auto}
+    .sample-sites-grid .sample-site-media{width:100%;margin-inline:auto}
+    .value-stack-full{width:100%;max-width:980px;margin-inline:auto}
     .sample-site-media{position:relative;background:#07131f;overflow:hidden;border-radius:18px;min-height:560px}
     .sample-site-media .site-frame{position:relative;width:100%;height:560px;background:#fff;overflow:hidden;-webkit-overflow-scrolling:touch}
     .sample-site-media iframe{display:block;width:100%;height:100%;min-height:560px;border:0;background:#fff;pointer-events:auto}
@@ -646,10 +649,7 @@
 
   <section class="section" style="padding-top:0">
     <div class="container value-grid">
-      <figure class="photo-card reveal" role="img" aria-label="OfferSprint website concept preview">
-        <figcaption class="photo-caption"><strong>Your site should feel as considered as your business.</strong><span>Real project preview • Northwest Web Co. concept work</span></figcaption>
-      </figure>
-      <div class="value-stack">
+      <div class="value-stack value-stack-full">
         <article class="value-card reveal"><div class="value-no">01 — CLARITY</div><h3>People should know what you do in seconds.</h3><p>Strong hierarchy, obvious next steps, and less clutter make it easier for a visitor to understand the offer instead of hunting for it.</p></article>
         <article class="value-card reveal"><div class="value-no">02 — TRUST</div><h3>Professional does not have to mean complicated.</h3><p>Clean spacing, real work samples, transparent pricing, and consistent design make the business feel intentional without looking like a giant agency.</p></article>
         <article class="value-card reveal"><div class="value-no">03 — ACTION</div><h3>Every section should earn its place.</h3><p>Calls-to-action, portfolio examples, pricing, FAQs, and contact paths are placed so the visitor always has a clear next move.</p></article>
