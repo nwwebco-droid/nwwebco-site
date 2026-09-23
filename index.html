@@ -25,7 +25,7 @@
   <meta name="twitter:description" content="Professional websites for small businesses. $250 flat, plus optional on-page SEO for $25.">
   <meta name="twitter:image" content="https://nwwebco.com/media/nw-logo-full.png">
 
-   <link rel="icon" type="image/png" sizes="192x192" href="media/nw-logo-mark.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="media/nw-logo-mark.png">
   <link rel="apple-touch-icon" href="media/nw-logo-mark.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -249,7 +249,7 @@
     .work-card:hover{transform:translateY(-5px);box-shadow:0 25px 60px rgba(4,15,25,.11)}
     .work-media{position:relative;background:#0b1a29;aspect-ratio:16/10;overflow:hidden}
     .work-media img,.work-media video{width:100%;height:100%;object-fit:cover}
-       .work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 40%,rgba(7,19,31,.25) 100%);pointer-events:none}
+    .work-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,19,31,0) 40%,rgba(7,19,31,.25) 100%);pointer-events:none}
     .work-media.compare{cursor:ew-resize;touch-action:pan-y}
     .compare-after{position:absolute;inset:0;z-index:1}
     .compare-after img{width:100%;height:100%;object-fit:cover}
@@ -601,7 +601,7 @@
 
       <div class="work-grid">
         <article class="work-card reveal">
-                    <div class="work-media compare" style="--reveal:0%">
+          <div class="work-media compare" style="--reveal:0%">
             <div class="compare-after"><img src="media/offer-sprint-poster.jpg" alt="OfferSprint website concept preview" loading="lazy"></div>
             <div class="compare-before">
               <div class="loading-screen">
@@ -618,7 +618,7 @@
         </article>
 
         <article class="work-card reveal">
-                   <div class="work-media compare" style="--reveal:0%">
+          <div class="work-media compare" style="--reveal:0%">
             <div class="compare-after"><img src="media/fluent-elena-poster.jpg" alt="Fluent with Elena website concept preview" loading="lazy"></div>
             <div class="compare-before">
               <div class="loading-screen">
@@ -633,7 +633,8 @@
           </div>
           <div class="work-body"><span class="work-tag">Trust-first design</span><h3>Fluent with Elena</h3><p>A friendly service site that turns a personal brand into one clean place to understand, trust, and book.</p><div class="work-meta"><span class="pill">Service offer</span><span class="pill">Personal brand</span><span class="pill">Booking CTA</span></div></div>
         </article>
-                <article class="work-card wide reveal">
+
+        <article class="work-card wide reveal">
           <div class="work-media compare" style="--reveal:0%">
             <div class="compare-after">
               <div class="site-frame"><iframe src="media/atelier-morrow.html" title="Atelier Morrow — redesigned site" loading="lazy" tabindex="-1"></iframe></div>
@@ -820,7 +821,7 @@
   document.getElementById('modalClose').addEventListener('click',closeVideo);
   modal.addEventListener('click',e=>{if(e.target===modal) closeVideo()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('open')) closeVideo()});
-  
+
   // Before/after compare sliders
   document.querySelectorAll('.work-media.compare').forEach(el=>{
     let dragging=false;
@@ -841,8 +842,6 @@
     el.addEventListener('pointercancel',()=>{ dragging=false; });
   });
 
-  // FAQ accordion
-  
   // FAQ accordion
   document.querySelectorAll('.faq button').forEach(button=>button.addEventListener('click',()=>{
     const item=button.parentElement;
