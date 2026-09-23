@@ -442,6 +442,27 @@
       *,*::before,*::after{animation:none!important;transition:none!important}
       .reveal{opacity:1;transform:none}
     }
+
+    /* Responsive live sample website previews */
+    .sample-sites-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+    .sample-site-media{position:relative;background:#07131f;overflow:hidden;border-radius:16px;min-height:560px}
+    .sample-site-media .site-frame{position:relative;width:100%;height:560px;background:#fff;overflow:auto;-webkit-overflow-scrolling:touch}
+    .sample-site-media iframe{display:block;width:100%;height:100%;min-height:560px;border:0;background:#fff;pointer-events:auto}
+    .sample-site-media::after{content:'Scroll to explore ↕';position:absolute;left:16px;bottom:16px;z-index:3;padding:7px 11px;border-radius:999px;background:rgba(7,19,31,.84);color:#fff;font-size:11px;letter-spacing:.04em;pointer-events:none;box-shadow:0 8px 20px rgba(0,0,0,.18)}
+    .site-open{z-index:4}
+    .sample-site-note{margin:0 0 14px;color:var(--muted);font-size:13px}
+    .sample-site-note strong{color:var(--paper)}
+    @media (max-width:900px){
+      .sample-sites-grid{grid-template-columns:1fr}
+      .sample-site-media,.sample-site-media .site-frame,.sample-site-media iframe{min-height:620px;height:620px}
+    }
+    @media (max-width:600px){
+      .sample-sites-grid{gap:20px}
+      .sample-site-media{min-height:520px;height:520px;border-radius:12px}
+      .sample-site-media .site-frame,.sample-site-media iframe{height:520px;min-height:520px}
+      .sample-site-media::after{left:10px;bottom:10px;font-size:10px}
+      .site-open{font-size:12px;padding:8px 11px}
+    }
   </style>
 </head>
 <body>
@@ -602,10 +623,10 @@
       </div>
 
       <div class="work-grid sample-sites-grid">
-        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/northpeak/index.html" title="NorthPeak sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Outdoor construction</span><a class="site-open" href="media/sample-sites/northpeak/index.html" target="_blank" rel="noopener">Open full site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>NorthPeak</h3><p>A premium outdoor-construction concept with a bold Pacific Northwest look, strong calls-to-action, and a polished mobile layout.</p><div class="work-meta"><span class="pill">Navy + green</span><span class="pill">Service design</span><span class="pill">Lead CTA</span></div></div></article>
-        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/emberline/index.html" title="Emberline sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Coffee roasters</span><a class="site-open" href="media/sample-sites/emberline/index.html" target="_blank" rel="noopener">Open full site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Emberline</h3><p>A warm, editorial coffee brand concept with a rich espresso palette, product-focused hierarchy, and subscription CTA.</p><div class="work-meta"><span class="pill">Editorial</span><span class="pill">Warm palette</span><span class="pill">Product CTA</span></div></div></article>
-        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/atlas/index.html" title="Atlas Advisory sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Business advisory</span><a class="site-open" href="media/sample-sites/atlas/index.html" target="_blank" rel="noopener">Open full site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Atlas Advisory</h3><p>A high-trust consulting concept using restrained indigo, large typography, proof points, and a strategy-call funnel.</p><div class="work-meta"><span class="pill">Corporate</span><span class="pill">Proof points</span><span class="pill">Booking CTA</span></div></div></article>
-        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/voltline/index.html" title="Voltline sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">EV performance</span><a class="site-open" href="media/sample-sites/voltline/index.html" target="_blank" rel="noopener">Open full site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Voltline</h3><p>A dark, futuristic EV concept with cyan accents, premium visual treatment, and a strong estimate-generation path.</p><div class="work-meta"><span class="pill">Dark mode</span><span class="pill">Futuristic</span><span class="pill">Estimate CTA</span></div></div></article>
+        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/northpeak/index.html" title="NorthPeak sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Outdoor construction</span><a class="site-open" href="media/sample-sites/northpeak/index.html" target="_blank" rel="noopener">View live site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>NorthPeak</h3><p>A premium outdoor-construction concept with a bold Pacific Northwest look, strong calls-to-action, and a polished mobile layout.</p><div class="sample-site-note">Tap <strong>View live site</strong> for the full, scrollable website.</div><div class="work-meta"><span class="pill">Navy + green</span><span class="pill">Service design</span><span class="pill">Lead CTA</span></div></div></article>
+        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/emberline/index.html" title="Emberline sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Coffee roasters</span><a class="site-open" href="media/sample-sites/emberline/index.html" target="_blank" rel="noopener">View live site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Emberline</h3><p>A warm, editorial coffee brand concept with a rich espresso palette, product-focused hierarchy, and subscription CTA.</p><div class="sample-site-note">Tap <strong>View live site</strong> for the full, scrollable website.</div><div class="work-meta"><span class="pill">Editorial</span><span class="pill">Warm palette</span><span class="pill">Product CTA</span></div></div></article>
+        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/atlas/index.html" title="Atlas Advisory sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">Business advisory</span><a class="site-open" href="media/sample-sites/atlas/index.html" target="_blank" rel="noopener">View live site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Atlas Advisory</h3><p>A high-trust consulting concept using restrained indigo, large typography, proof points, and a strategy-call funnel.</p><div class="sample-site-note">Tap <strong>View live site</strong> for the full, scrollable website.</div><div class="work-meta"><span class="pill">Corporate</span><span class="pill">Proof points</span><span class="pill">Booking CTA</span></div></div></article>
+        <article class="work-card wide reveal"><div class="work-media sample-site-media"><div class="site-frame"><iframe src="media/sample-sites/voltline/index.html" title="Voltline sample website" loading="lazy" tabindex="-1"></iframe></div><span class="video-badge">EV performance</span><a class="site-open" href="media/sample-sites/voltline/index.html" target="_blank" rel="noopener">View live site ↗</a></div><div class="work-body"><span class="work-tag">Sample website</span><h3>Voltline</h3><p>A dark, futuristic EV concept with cyan accents, premium visual treatment, and a strong estimate-generation path.</p><div class="sample-site-note">Tap <strong>View live site</strong> for the full, scrollable website.</div><div class="work-meta"><span class="pill">Dark mode</span><span class="pill">Futuristic</span><span class="pill">Estimate CTA</span></div></div></article>
       </div>
     </div>
   </section>
