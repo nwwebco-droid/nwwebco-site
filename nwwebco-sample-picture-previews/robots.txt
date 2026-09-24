@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://nwwebco.com/sitemap.xml
